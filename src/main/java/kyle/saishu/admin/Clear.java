@@ -20,11 +20,10 @@ public class Clear extends ListenerAdapter {
 			if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
 
 				if (args.length < 2) {
-
 					event.getChannel().sendTyping().complete();
 					EmbedBuilder usage = new EmbedBuilder();
 					usage.setColor(0xefeb75);
-					usage.setTitle("Specify amount to delete");
+					usage.setTitle(":wastebasket: Specify amount to delete");
 					usage.setDescription("Usage: `" + Main.PREFIX + "clear [# of messages]`");
 					event.getChannel().sendMessage(usage.build()).queue((message) -> {
 						message.delete().queueAfter(5, TimeUnit.SECONDS);
@@ -68,7 +67,6 @@ public class Clear extends ListenerAdapter {
 								message.delete().queueAfter(5, TimeUnit.SECONDS);
 							});
 						} else {
-
 							event.getChannel().sendTyping().complete();
 							EmbedBuilder error = new EmbedBuilder();
 							error.setColor(0xf97272);
