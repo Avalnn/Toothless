@@ -26,6 +26,7 @@ public class Main {
 		// Admin Listeners
 		jda.addEventListener(new Clear());
 		jda.addEventListener(new Mute());
+		jda.addEventListener(new Unmute());
 		
 	}
 }
