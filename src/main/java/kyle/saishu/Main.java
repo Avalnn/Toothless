@@ -4,6 +4,7 @@ import javax.security.auth.login.LoginException;
 
 import kyle.saishu.admin.*;
 import kyle.saishu.events.*;
+import kyle.saishu.general.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -22,6 +23,9 @@ public class Main {
 	
 		// Event Listeners
 		jda.addEventListener(new Join());
+
+		// General Listeners
+		jda.addEventListener(new RandomColor());
 		
 		// Admin Listeners
 		jda.addEventListener(new Clear());
