@@ -17,12 +17,12 @@ public class Unmute extends ListenerAdapter {
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 
 		if (args[0].equalsIgnoreCase(Main.PREFIX + "unmute")) {
+			event.getChannel().sendTyping().complete();
 
 			if (event.getMember().hasPermission(Permission.VOICE_MUTE_OTHERS)) {
 				event.getMessage().delete().queueAfter(6, TimeUnit.SECONDS);
 
 				if (args.length < 2) {
-					event.getChannel().sendTyping().complete();
 					EmbedBuilder usage = new EmbedBuilder();
 					usage.setColor(0xefeb75);
 					usage.setTitle(":loud_sound: Specify user");
@@ -30,15 +30,18 @@ public class Unmute extends ListenerAdapter {
 					event.getChannel().sendMessage(usage.build()).queue((message) -> {
 						message.delete().queueAfter(5, TimeUnit.SECONDS);
 					});
+
+					// Checks If Mentioned User Has Role
 				} else if (event.getMessage().getMentionedMembers().get(0).getRoles()
 						.contains(event.getGuild().getRolesByName("no talk", false).get(0)) == true) {
 
+					// Finds Mentioned User And Role
 					unmutee = event.getMessage().getMentionedMembers().get(0);
 					Role role = event.getGuild().getRolesByName("no talk", false).get(0);
 
+					// Removes Role From Mentioned User
 					event.getGuild().getController().removeSingleRoleFromMember(unmutee, role).queue();
 
-					event.getChannel().sendTyping().complete();
 					EmbedBuilder success = new EmbedBuilder();
 					success.setColor(0x85f96d);
 					success.setTitle(":white_check_mark: Successfully Unmuted");
@@ -47,7 +50,6 @@ public class Unmute extends ListenerAdapter {
 						message.delete().queueAfter(5, TimeUnit.SECONDS);
 					});
 				} else {
-					event.getChannel().sendTyping().complete();
 					EmbedBuilder error = new EmbedBuilder();
 					error.setColor(0xf97272);
 					error.setTitle(":red_circle: Error");
@@ -57,7 +59,6 @@ public class Unmute extends ListenerAdapter {
 					});
 				}
 			} else {
-				event.getChannel().sendTyping().complete();
 				EmbedBuilder error = new EmbedBuilder();
 				error.setColor(0xf97272);
 				error.setTitle(":red_circle: Error");

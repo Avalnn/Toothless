@@ -16,11 +16,11 @@ public class Clear extends ListenerAdapter {
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 
 		if (args[0].equalsIgnoreCase(Main.PREFIX + "clear")) {
+			event.getChannel().sendTyping().complete();
 
 			if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
 
 				if (args.length < 2) {
-					event.getChannel().sendTyping().complete();
 					EmbedBuilder usage = new EmbedBuilder();
 					usage.setColor(0xefeb75);
 					usage.setTitle(":wastebasket: Specify amount to delete");
@@ -30,11 +30,11 @@ public class Clear extends ListenerAdapter {
 					});
 				} else {
 					try {
+						// Retrieves Past Messages
 						List<Message> messages = event.getChannel().getHistory().retrievePast(Integer.parseInt(args[1]))
 								.complete();
 						event.getChannel().deleteMessages(messages).queue();
 
-						event.getChannel().sendTyping().complete();
 						EmbedBuilder success = new EmbedBuilder();
 						success.setColor(0x85f96d);
 						success.setTitle(":white_check_mark: Successfully deleted");
@@ -43,10 +43,10 @@ public class Clear extends ListenerAdapter {
 							message.delete().queueAfter(5, TimeUnit.SECONDS);
 						});
 
+						// Checks if messages deleted are less than 100
 					} catch (IllegalArgumentException e) {
 						if (e.toString().startsWith("java.lang.IllegalArgumentException: Message retrieval")) {
 
-							event.getChannel().sendTyping().complete();
 							EmbedBuilder error = new EmbedBuilder();
 							error.setColor(0xf97272);
 							error.setTitle(":red_circle: Error");
@@ -54,11 +54,11 @@ public class Clear extends ListenerAdapter {
 							event.getChannel().sendMessage(error.build()).queue((message) -> {
 								message.delete().queueAfter(5, TimeUnit.SECONDS);
 							});
-							
+
+							// Checks if messages are more than 2
 						} else if (e.toString().startsWith(
 								"java.lang.IllegalArgumentException: Must provide at least 2 or at most 100 messages to be deleted.")) {
 
-							event.getChannel().sendTyping().complete();
 							EmbedBuilder error = new EmbedBuilder();
 							error.setColor(0xf97272);
 							error.setTitle(":red_circle: Error");
@@ -67,7 +67,6 @@ public class Clear extends ListenerAdapter {
 								message.delete().queueAfter(5, TimeUnit.SECONDS);
 							});
 						} else {
-							event.getChannel().sendTyping().complete();
 							EmbedBuilder error = new EmbedBuilder();
 							error.setColor(0xf97272);
 							error.setTitle(":red_circle: Error");
@@ -79,7 +78,6 @@ public class Clear extends ListenerAdapter {
 					}
 				}
 			} else {
-				event.getChannel().sendTyping().complete();
 				EmbedBuilder error = new EmbedBuilder();
 				error.setColor(0xf97272);
 				error.setTitle(":red_circle: Error");
