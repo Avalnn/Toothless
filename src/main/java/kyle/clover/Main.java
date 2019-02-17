@@ -15,14 +15,14 @@ public class Main {
     public static JDA jda;
 	public static String PREFIX = "~";
 	
-	public static void main(String[] args)  throws LoginException {
+	public static void main(String[] args) throws LoginException {
 		Token token = new Token();
 		jda = new JDABuilder(AccountType.BOT).setToken(token.token).build();
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
-		jda.getPresence().setGame(Game.watching("for 4 leaf clovers"));
+		jda.getPresence().setGame(Game.playing("for 4 leaf clovers"));
 	
 		// Event Listeners
-		jda.addEventListener(new Join());
+		jda.addEventListener(new JoinLeave());
 
 		// General Listeners
 		jda.addEventListener(new RandomColor());
@@ -31,6 +31,7 @@ public class Main {
 		jda.addEventListener(new Clear());
 		jda.addEventListener(new Mute());
 		jda.addEventListener(new Unmute());
+		jda.addEventListener(new Reload());
 		
 	}
 }
