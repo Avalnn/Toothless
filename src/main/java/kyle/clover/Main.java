@@ -19,7 +19,7 @@ public class Main {
 		Token token = new Token();
 		jda = new JDABuilder(AccountType.BOT).setToken(token.token).build();
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
-		jda.getPresence().setGame(Game.playing("for 4 leaf clovers"));
+		jda.getPresence().setGame(Game.watching("four leaf clovers"));
 	
 		// Event Listeners
 		jda.addEventListener(new JoinLeave());
