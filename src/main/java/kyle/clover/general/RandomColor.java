@@ -29,6 +29,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class RandomColor extends ListenerAdapter {
 
     // Coded By @Mykyta https://github.com/nkomarn
+    // Idea By @Kyle https://github.com/Avalnn
 
     Random random = new Random();
     int nextInt = random.nextInt(0xffffff + 1);

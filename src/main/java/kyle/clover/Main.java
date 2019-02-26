@@ -26,11 +26,12 @@ public class Main {
 
 		// General Listeners
 		jda.addEventListener(new RandomColor());
+		jda.addEventListener(new About());
+		jda.addEventListener(new Stab());
+		jda.addEventListener(new Userinfo());
 		
 		// Admin Listeners
 		jda.addEventListener(new Clear());
-		jda.addEventListener(new Mute());
-		jda.addEventListener(new Unmute());
 		jda.addEventListener(new Reload());
 		
 	}
