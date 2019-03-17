@@ -1,10 +1,10 @@
-package kyle.clover;
+package kyle.phoenix;
 
 import javax.security.auth.login.LoginException;
 
-import kyle.clover.admin.*;
-import kyle.clover.events.*;
-import kyle.clover.general.*;
+import kyle.phoenix.admin.*;
+import kyle.phoenix.events.*;
+import kyle.phoenix.general.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -19,7 +19,7 @@ public class Main {
 		Token token = new Token();
 		jda = new JDABuilder(AccountType.BOT).setToken(token.token).build();
 		jda.getPresence().setStatus(OnlineStatus.ONLINE);
-		jda.getPresence().setGame(Game.watching("four leaf clovers"));
+		jda.getPresence().setGame(Game.watching("some nerd"));
 	
 		// Event Listeners
 		jda.addEventListener(new JoinLeave());

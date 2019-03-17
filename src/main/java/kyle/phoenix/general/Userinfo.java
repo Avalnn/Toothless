@@ -1,9 +1,9 @@
-package kyle.clover.general;
+package kyle.phoenix.general;
 
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-import kyle.clover.Main;
-import kyle.clover.utils.StatusCheck;
+import kyle.phoenix.Main;
+import kyle.phoenix.utils.StatusCheck;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
 public class Userinfo extends ListenerAdapter {

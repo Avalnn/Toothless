@@ -1,4 +1,4 @@
-package kyle.clover.events;
+package kyle.phoenix.events;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;

@@ -1,4 +1,4 @@
-package kyle.clover.general;
+package kyle.phoenix.general;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -20,8 +20,8 @@ import javax.xml.bind.DatatypeConverter;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import kyle.clover.Main;
-import kyle.clover.Token;
+import kyle.phoenix.Main;
+import kyle.phoenix.Token;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;

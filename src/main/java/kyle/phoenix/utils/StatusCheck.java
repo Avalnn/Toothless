@@ -1,4 +1,4 @@
-package kyle.clover.utils;
+package kyle.phoenix.utils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,11 +13,11 @@ public class StatusCheck {
 
     public EmbedBuilder online(GuildMessageReceivedEvent event) {
         String roles = "";
-        roles = event.getMember().getRoles().stream().map((rol) -> " , " + rol.getName()).reduce(roles, String::concat);
+        roles = event.getMember().getRoles().stream().map((rol) -> ", " + rol.getName()).reduce(roles, String::concat);
         if (roles.isEmpty())
             roles = "None";
         else
-            roles = roles.substring(3);
+            roles = roles.substring(2);
 
         EmbedBuilder online = new EmbedBuilder();
         online.setColor(0x85f96d);
