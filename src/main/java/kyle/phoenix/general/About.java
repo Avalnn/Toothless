@@ -17,7 +17,7 @@ public class About extends ListenerAdapter {
             EmbedBuilder success = new EmbedBuilder();
             success.setColor(0x85f96d);
             success.setTitle(":newspaper: About Clover");
-            success.setDescription("**Website**: [Github](https://github.com/Avalnn/Clover)" + "\n"
+            success.setDescription("**Website**: [Github](https://github.com/Avalnn/Phoenix)" + "\n"
                     + "**Language**: [Java](https://www.java.com/)" + "\n"
                     + "**Library**: [JDA](https://github.com/DV8FromTheWorld/JDA)" + "\n" + "**Coded By**: "
                     + event.getGuild().getOwner().getEffectiveName() + "#"
