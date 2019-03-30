@@ -8,7 +8,7 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
 public class StatusCheck {
     LocalDateTime ld = LocalDateTime.now();
-    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("E, dd MMM yyyy a");
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("E, dd MMM yyyy");
     String date = ld.format(dtf);
 
     public EmbedBuilder online(GuildMessageReceivedEvent event) {
