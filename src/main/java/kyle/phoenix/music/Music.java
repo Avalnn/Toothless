@@ -11,7 +11,7 @@ import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 
-import kyle.phoenix.Main;
+import kyle.phoenix.Constants;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.TextChannel;
@@ -53,11 +53,11 @@ public class Music extends ListenerAdapter {
         Guild guild = event.getGuild();
 
         if (guild != null) {
-            if (command[0].equalsIgnoreCase(Main.PREFIX + "play")
-                    && command[0].equalsIgnoreCase(Main.PREFIX + "p") & command.length == 2) {
+            if (command[0].equalsIgnoreCase(Constants.PREFIX + "play")
+                    && command[0].equalsIgnoreCase(Constants.PREFIX + "p") & command.length == 2) {
                 loadAndPlay(event.getTextChannel(), command[1]);
-            } else if (command[0].equalsIgnoreCase(Main.PREFIX + "skip")
-                    && command[0].equalsIgnoreCase(Main.PREFIX + "s")) {
+            } else if (command[0].equalsIgnoreCase(Constants.PREFIX + "skip")
+                    && command[0].equalsIgnoreCase(Constants.PREFIX + "s")) {
                 skipTrack(event.getTextChannel());
             }
 

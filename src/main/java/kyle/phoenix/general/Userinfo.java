@@ -2,7 +2,7 @@ package kyle.phoenix.general;
 
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-import kyle.phoenix.Main;
+import kyle.phoenix.Constants;
 import kyle.phoenix.utils.StatusCheck;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
@@ -12,7 +12,7 @@ public class Userinfo extends ListenerAdapter {
 
         String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-        if (args[0].equalsIgnoreCase(Main.PREFIX + "userinfo")) {
+        if (args[0].equalsIgnoreCase(Constants.PREFIX + "userinfo")) {
 
             StatusCheck statuscheck = new StatusCheck();
             String status = event.getMember().getOnlineStatus().toString();

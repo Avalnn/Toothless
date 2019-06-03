@@ -3,7 +3,7 @@ package kyle.phoenix.admin;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import kyle.phoenix.Main;
+import kyle.phoenix.Constants;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
@@ -15,7 +15,7 @@ public class Clear extends ListenerAdapter {
 	public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 
-		if (args[0].equalsIgnoreCase(Main.PREFIX + "clear")) {
+		if (args[0].equalsIgnoreCase(Constants.PREFIX + "clear")) {
 			event.getChannel().sendTyping().complete();
 
 			if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
@@ -24,7 +24,7 @@ public class Clear extends ListenerAdapter {
 					EmbedBuilder usage = new EmbedBuilder();
 					usage.setColor(0xefeb75);
 					usage.setTitle(":wastebasket: Specify amount to delete");
-					usage.setDescription("Usage: `" + Main.PREFIX + "clear [# of messages]`");
+					usage.setDescription("Usage: `" + Constants.PREFIX + "clear [# of messages]`");
 					event.getChannel().sendMessage(usage.build()).queue((message) -> {
 						message.delete().queueAfter(5, TimeUnit.SECONDS);
 					});
