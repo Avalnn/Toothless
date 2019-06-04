@@ -1,4 +1,4 @@
-package kyle.phoenix.utils;
+package kyle.phoenix.admin;
 
 import kyle.phoenix.Constants;
 import net.dv8tion.jda.core.EmbedBuilder;

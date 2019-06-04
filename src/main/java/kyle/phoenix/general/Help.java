@@ -18,11 +18,14 @@ public class Help extends ListenerAdapter {
             success.setTitle(":gear: Help");
             success.setDescription("Commands for Phoenix!" 
             + "\n" + 
-            "\n**General Commands**" + "\n`" + Constants.PREFIX + "userinfo` - Shows the info of a member." 
+            "\n**General Commands**" + "\n`" + Constants.PREFIX 
+            + "userinfo` - Shows the info of a member." 
             + "\n" +
-            "\n**Admin Commands**" + "\n`" + Constants.PREFIX + "clear` - Deletes a number of messages."
+            "\n**Admin Commands**" + "\n`" + Constants.PREFIX 
+            + "clear` - Deletes a number of messages."
             + "\n" +
-            "\n**COMING SOON**" + "\nMusic" + "\nLevels"+ "\nEconomy" + "\nReactions");
+            "\n**COMING SOON**" 
+            + "\nMusic" + "\nLevels"+ "\nEconomy" + "\nReactions");
             event.getChannel().sendMessage(success.build()).queue();
 
         }
