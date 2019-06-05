@@ -20,7 +20,7 @@ public class Main extends ListenerAdapter {
 	public static JDABuilder jda;
 
 	public static void main(String[] args) throws LoginException, IOException {
-		Config config = new Config(new File("botconfig.json"));
+		Config config = new Config(new File("src/main/java/kyle/toothless/config/botconfig.json"));
 		jda = new JDABuilder(AccountType.BOT);
 		jda.setToken(config.getString("token"));
 		jda.setStatus(OnlineStatus.ONLINE);
@@ -42,6 +42,7 @@ public class Main extends ListenerAdapter {
 			jda.addEventListener(new Queue());
 			jda.addEventListener(new Skip());
 			jda.addEventListener(new NowPlaying());
+			jda.addEventListener(new Volume());
 
 			// Admin Listeners
 			jda.addEventListener(new Clear());
