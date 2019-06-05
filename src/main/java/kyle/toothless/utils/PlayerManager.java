@@ -1,4 +1,4 @@
-package kyle.phoenix.utils;
+package kyle.toothless.utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +14,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.TextChannel;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
 public class PlayerManager {
     private static PlayerManager INSTANCE;
@@ -41,7 +42,7 @@ public class PlayerManager {
         return musicManager;
     }
 
-    public void loadAndPlay(TextChannel channel, String trackUrl) {
+    public void loadAndPlay(TextChannel channel, String trackUrl, GuildMessageReceivedEvent event) {
         GuildMusicManager musicManager = getGuildMusicManager(channel.getGuild());
 
         playerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler(){
@@ -51,12 +52,12 @@ public class PlayerManager {
 
                 EmbedBuilder trackadd = new EmbedBuilder();
                 trackadd.setColor(0x85f96d);
-                trackadd.setThumbnail(track.getInfo().uri);
+                trackadd.setThumbnail("https://img.youtube.com/vi/" + track.getInfo().identifier + "/hqdefault.jpg");
                 trackadd.setTitle(":musical_note: Added To Queue");
                 trackadd.setDescription("[**" + track.getInfo().title + "**](" + trackUrl + ")");
                 trackadd.addField("Author", track.getInfo().author, true);
-                trackadd.addField("Queued By", "", true);
-                trackadd.addField("Song Duration", "W.I.P", true);
+                trackadd.addField("Queued By", event.getMember().getAsMention(), true);
+                trackadd.addField("Song Duration", "W.I.P" , true);
                 trackadd.addField("Position in queue", "W.I.P", true);
                 channel.sendMessage(trackadd.build()).queue();
 
@@ -68,12 +69,23 @@ public class PlayerManager {
                 AudioTrack firstTrack = playlist.getSelectedTrack();
 
                 if (firstTrack == null) {
-                    firstTrack = playlist.getTracks().get(0);
+                    firstTrack = playlist.getTracks().remove(0);
                 }
 
-                channel.sendMessage("Adding to queue " + firstTrack.getInfo()).queue();
+                EmbedBuilder addedqueue = new EmbedBuilder();
+                addedqueue.setColor(0x85f96d);
+                addedqueue.setThumbnail("https://img.youtube.com/vi/" + firstTrack.getInfo().identifier + "/hqdefault.jpg");
+                addedqueue.setTitle(":musical_note: Added Playlist To Queue");
+                addedqueue.setDescription("[**" + playlist.getName() + "**](" + trackUrl + ")");
+                addedqueue.addField("Author", firstTrack.getInfo().author, true);
+                addedqueue.addField("Queued By", event.getMember().getAsMention(), true);
+                addedqueue.addField("Song Duration", "W.I.P" , true);
+                addedqueue.addField("Playlist Amount", "" + playlist.getTracks().size(), true);
+                channel.sendMessage(addedqueue.build()).queue();
 
                 play(musicManager, firstTrack);
+
+                playlist.getTracks().forEach(musicManager.scheduler::queue);
             }
         
             @Override

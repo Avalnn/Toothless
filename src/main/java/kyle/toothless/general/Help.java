@@ -1,7 +1,7 @@
-package kyle.phoenix.general;
+package kyle.toothless.general;
 
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import kyle.phoenix.Constants;
+import kyle.toothless.Constants;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
@@ -16,7 +16,7 @@ public class Help extends ListenerAdapter {
             EmbedBuilder success = new EmbedBuilder();
             success.setColor(0x85f96d);
             success.setTitle(":gear: Help");
-            success.setDescription("Commands for Phoenix!" 
+            success.setDescription("Commands for toothless!" 
             + "\n" + 
             "\n**General Commands**" + "\n`" + Constants.PREFIX 
             + "userinfo` - Shows the info of a member." 

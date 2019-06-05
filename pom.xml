@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>kyle.phoenix</groupId>
-  <artifactId>Phoenix</artifactId>
+  <groupId>kyle.toothless</groupId>
+  <artifactId>Toothless</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
-  <name>Phoenix</name>
+  <name>Toothless</name>
 
 
   <properties>
@@ -27,13 +27,6 @@
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
       <version>3.8.3_462</version>
-    </dependency>
-
-    <!-- Sedmelluq's Lavaplayer JDA Audio Sending Node-->
-    <dependency>
-      <groupId>com.sedmelluq</groupId>
-      <artifactId>lavaplayer</artifactId>
-      <version>1.3.11</version>
     </dependency>
 
     <!-- Lava Player -->
@@ -62,11 +55,11 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <finalName>Phoenix</finalName>
+              <finalName>Toothless</finalName>
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>kyle.phoenix.Main</mainClass>
+                  <mainClass>kyle.toothless.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>

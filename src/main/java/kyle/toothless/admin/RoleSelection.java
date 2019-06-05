@@ -1,6 +1,6 @@
-package kyle.phoenix.admin;
+package kyle.toothless.admin;
 
-import kyle.phoenix.Constants;
+import kyle.toothless.Constants;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Role;

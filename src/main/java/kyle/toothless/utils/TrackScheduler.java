@@ -1,4 +1,4 @@
-package kyle.phoenix.utils;
+package kyle.toothless.utils;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
@@ -21,6 +21,10 @@ public class TrackScheduler extends AudioEventAdapter {
     if (!player.startTrack(track, true)) {
       queue.offer(track);
     }
+  }
+
+  public BlockingQueue<AudioTrack> getQueue() {
+    return queue;
   }
 
   public void nextTrack() {

@@ -1,11 +1,11 @@
-package kyle.phoenix;
+package kyle.toothless;
 
 import javax.security.auth.login.LoginException;
 
-import kyle.phoenix.admin.*;
-import kyle.phoenix.general.*;
-import kyle.phoenix.levels.*;
-import kyle.phoenix.music.*;
+import kyle.toothless.admin.*;
+import kyle.toothless.general.*;
+import kyle.toothless.levels.*;
+import kyle.toothless.music.*;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
@@ -19,7 +19,7 @@ public class Main extends ListenerAdapter {
 		Token token = new Token();
 		jda = new JDABuilder(AccountType.BOT).setToken(token.token);
 		jda.setStatus(OnlineStatus.ONLINE);
-		jda.setGame(Game.playing("with fire | " + Constants.PREFIX + "help"));
+		jda.setGame(Game.playing("with fish | " + Constants.PREFIX + "help"));
 
 		// General Listeners
 		jda.addEventListener(new Userinfo());
@@ -29,6 +29,10 @@ public class Main extends ListenerAdapter {
 		jda.addEventListener(new Connect());
 		jda.addEventListener(new Disconnect());
 		jda.addEventListener(new Play());
+		jda.addEventListener(new Stop());
+		jda.addEventListener(new Queue());
+		jda.addEventListener(new Skip());
+		jda.addEventListener(new NowPlaying());
 		
 		// Admin Listeners
 		jda.addEventListener(new Clear());

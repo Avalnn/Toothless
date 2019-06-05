@@ -1,9 +1,9 @@
-package kyle.phoenix.music;
+package kyle.toothless.music;
 
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import net.dv8tion.jda.core.managers.AudioManager;
 
-import kyle.phoenix.Constants;
+import kyle.toothless.Constants;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.GuildVoiceState;

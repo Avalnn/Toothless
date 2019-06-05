@@ -1,8 +1,8 @@
-package kyle.phoenix.admin;
+package kyle.toothless.admin;
 
 import java.util.concurrent.TimeUnit;
 
-import kyle.phoenix.Constants;
+import kyle.toothless.Constants;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -22,7 +22,7 @@ public class Restart extends ListenerAdapter {
                     EmbedBuilder success = new EmbedBuilder();
                     success.setColor(0x85f96d);
                     success.setTitle(":bomb: Restarting");
-                    success.setDescription("Phoenix is rebooting.. 10s remaining");
+                    success.setDescription("toothless is rebooting.. 10s remaining");
                     event.getChannel().sendMessage(success.build()).queue((message) -> {
                         message.delete().queueAfter(9, TimeUnit.SECONDS);
                     });

@@ -1,9 +1,9 @@
-package kyle.phoenix.general;
+package kyle.toothless.general;
 
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-import kyle.phoenix.Constants;
-import kyle.phoenix.utils.StatusCheck;
+import kyle.toothless.Constants;
+import kyle.toothless.utils.StatusCheck;
 import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 
 public class Userinfo extends ListenerAdapter {

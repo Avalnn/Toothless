@@ -1,9 +1,9 @@
-package kyle.phoenix.admin;
+package kyle.toothless.admin;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import kyle.phoenix.Constants;
+import kyle.toothless.Constants;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
