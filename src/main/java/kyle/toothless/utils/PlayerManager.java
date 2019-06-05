@@ -2,6 +2,7 @@ package kyle.toothless.utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -57,7 +58,7 @@ public class PlayerManager {
                 trackadd.setDescription("[**" + track.getInfo().title + "**](" + trackUrl + ")");
                 trackadd.addField("Author", track.getInfo().author, true);
                 trackadd.addField("Queued By", event.getMember().getAsMention(), true);
-                trackadd.addField("Song Duration", "W.I.P" , true);
+                trackadd.addField("Song Duration", formatTime(track.getDuration()), true);
                 trackadd.addField("Position in queue", "W.I.P", true);
                 channel.sendMessage(trackadd.build()).queue();
 
@@ -79,7 +80,7 @@ public class PlayerManager {
                 addedqueue.setDescription("[**" + playlist.getName() + "**](" + trackUrl + ")");
                 addedqueue.addField("Author", firstTrack.getInfo().author, true);
                 addedqueue.addField("Queued By", event.getMember().getAsMention(), true);
-                addedqueue.addField("Song Duration", "W.I.P" , true);
+                addedqueue.addField("Song Duration", formatTime(firstTrack.getDuration()) , true);
                 addedqueue.addField("Playlist Amount", "" + playlist.getTracks().size(), true);
                 channel.sendMessage(addedqueue.build()).queue();
 
@@ -110,6 +111,14 @@ public class PlayerManager {
 
     private void play(GuildMusicManager musicManager, AudioTrack track) {
         musicManager.scheduler.queue(track);
+    }
+
+    private String formatTime(Long timeInMillis) {
+        final long hours = timeInMillis / TimeUnit.HOURS.toMillis(1);
+        final long minutes = timeInMillis / TimeUnit.MINUTES.toMillis(1);
+        final long seconds = timeInMillis % TimeUnit.MINUTES.toMillis(1) / TimeUnit.SECONDS.toMillis(1);
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
     public static synchronized PlayerManager getInstance() {

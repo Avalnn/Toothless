@@ -40,7 +40,7 @@ public class NowPlaying extends ListenerAdapter {
                 nowplaying.setTitle(":musical_note: Now Playing");
 
                 nowplaying.appendDescription(String.format(
-                    "[%s](%s)\n%s - %s",
+                    "**[%s](%s)**\n\n%s %s - %s",
                     info.title,
                     info.uri,
                     player.isPaused() ? "\u23F8" : "▶",
@@ -48,6 +48,8 @@ public class NowPlaying extends ListenerAdapter {
                     formatTime(player.getPlayingTrack().getDuration())
 
                 ));
+
+                event.getChannel().sendMessage(nowplaying.build()).queue();
             }
         }
     }
@@ -55,7 +57,7 @@ public class NowPlaying extends ListenerAdapter {
     private String formatTime(Long timeInMillis) {
         final long hours = timeInMillis / TimeUnit.HOURS.toMillis(1);
         final long minutes = timeInMillis / TimeUnit.MINUTES.toMillis(1);
-        final long seconds = timeInMillis / TimeUnit.MINUTES.toMillis(1);
+        final long seconds = timeInMillis % TimeUnit.MINUTES.toMillis(1) / TimeUnit.SECONDS.toMillis(1);
 
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
