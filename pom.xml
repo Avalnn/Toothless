@@ -73,9 +73,11 @@
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>kyle.toothless.Main</mainClass>
+                  <manifestEntries>
+                    <mainClass>kyle.toothless.Main</mainClass>
                     <X-Compile-Source-JDK>${maven.compile.source}</X-Compile-Source-JDK>
                     <X-Compile-Target-JDK>${maven.compile.target}</X-Compile-Target-JDK>
+                  </manifestEntries>
                 </transformer>
               </transformers>
             </configuration>
