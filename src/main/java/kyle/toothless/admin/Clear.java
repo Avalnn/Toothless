@@ -16,7 +16,7 @@ public class Clear extends ListenerAdapter {
 		String[] args = event.getMessage().getContentRaw().split("\\s+");
 
 		if (args[0].equalsIgnoreCase(Constants.PREFIX + "clear")) {
-			event.getChannel().sendTyping().complete();
+			
 
 			if (event.getMember().hasPermission(Permission.MESSAGE_MANAGE)) {
 

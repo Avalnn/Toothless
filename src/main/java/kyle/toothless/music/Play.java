@@ -16,6 +16,7 @@ public class Play extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         String[] args = event.getMessage().getContentRaw().split("\\s+");
+        
 
         if (args[0].equalsIgnoreCase(Constants.PREFIX + "play")) {
 

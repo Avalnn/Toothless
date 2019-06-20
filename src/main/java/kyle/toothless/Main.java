@@ -1,9 +1,17 @@
 package kyle.toothless;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.security.auth.login.LoginException;
+
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Firestore;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.cloud.FirestoreClient;
 
 import kyle.toothless.admin.*;
 import kyle.toothless.config.Config;
@@ -18,9 +26,20 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class Main extends ListenerAdapter {
 	public static JDABuilder jda;
-
+	public static Firestore db;
+	
 	public static void main(String[] args) throws LoginException, IOException {
-		Config config = new Config(new File("src/main/java/kyle/toothless/config/botconfig.json"));
+		// Initialize Firebase database
+		InputStream serviceAccount = new FileInputStream("GCP.json");
+		GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
+		FirebaseOptions options = new FirebaseOptions.Builder()
+			.setCredentials(credentials)
+			.build();
+		FirebaseApp.initializeApp(options);
+	    db = FirestoreClient.getFirestore();
+
+		Config config = new Config(new File("botconfig.json"));
+		// Config config = new Config(new File("src/main/java/kyle/toothless/botconfig.json"));
 		jda = new JDABuilder(AccountType.BOT);
 		jda.setToken(config.getString("token"));
 		jda.setStatus(OnlineStatus.ONLINE);
@@ -34,6 +53,19 @@ public class Main extends ListenerAdapter {
 			jda.addEventListener(new Userinfo());
 			jda.addEventListener(new Help());
 
+			// Admin Listeners
+			jda.addEventListener(new Clear());
+			jda.addEventListener(new RoleSelection());
+
+			// Levels Listeners
+			jda.addEventListener(new Level());
+		}
+
+		if (Config.getInstance().getBoolean("disabledcommands")) {
+
+		}
+
+		if (Config.getInstance().getBoolean("musiccommands")) {
 			// Music Listeners
 			jda.addEventListener(new Connect());
 			jda.addEventListener(new Disconnect());
@@ -43,17 +75,10 @@ public class Main extends ListenerAdapter {
 			jda.addEventListener(new Skip());
 			jda.addEventListener(new NowPlaying());
 			jda.addEventListener(new Volume());
-
-			// Admin Listeners
-			jda.addEventListener(new Clear());
-			jda.addEventListener(new RoleSelection());
-
-			// Levels Listeners
-			jda.addEventListener(new Level());
-
+			jda.addEventListener(new ClearQueue());
+			jda.addEventListener(new Pause());
 		}
 
 		jda.build();
-
 	}
 }

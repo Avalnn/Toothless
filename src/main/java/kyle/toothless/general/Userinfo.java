@@ -9,8 +9,8 @@ import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 public class Userinfo extends ListenerAdapter {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-
         String[] args = event.getMessage().getContentRaw().split("\\s+");
+        
 
         if (args[0].equalsIgnoreCase(Constants.PREFIX + "userinfo")) {
 
